@@ -1,0 +1,2 @@
+export const CHOOSE_HERO_NAME = 'CHOOSE_HERO_NAME';
+export type CHOOSE_HERO_NAME = typeof CHOOSE_HERO_NAME;

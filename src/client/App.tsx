@@ -1,16 +1,14 @@
 import * as React from 'react';
-import './App.css';
+import { Provider } from 'react-redux';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Heros</h2>
-        </div>
-      </div>
-    );
-  }
-}
+import HomePageContainer from './components/homePage/HomePage';
+
+const App = ({ store }: { store: any }) => (
+  <Provider store={store}>
+    <div>
+      <HomePageContainer />
+    </div>
+  </Provider>
+);
 
 export default App;
