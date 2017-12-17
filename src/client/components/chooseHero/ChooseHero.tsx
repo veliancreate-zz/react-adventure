@@ -1,12 +1,21 @@
 import * as React from 'react';
+import { ChooseHeroNameAction } from '../../state/actions';
 
-export default class ChooseHero extends React.Component {
+interface Props {
+  heroName: string;
+  chooseHeroName(name: string): ChooseHeroNameAction;
+}
+
+interface State {
+  heroName: string;
+}
+
+export default class ChooseHero extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
       heroName: ''
     };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -16,9 +25,7 @@ export default class ChooseHero extends React.Component {
   }
 
   handleSubmit(event: any) {
-    console.log(this.state);
-    console.log(this.props)
-    // (this.props as any).chooseHeroName((this.state as any).heroName);
+    this.props.chooseHeroName(this.state.heroName);
     event.preventDefault();
   }
 
@@ -27,7 +34,7 @@ export default class ChooseHero extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <label>
           Choose Hero:
-          <input value={(this.state as any).heroName} onChange={this.handleChange} />
+          <input value={this.state.heroName} onChange={this.handleChange} />
         </label>
       </form>
     );

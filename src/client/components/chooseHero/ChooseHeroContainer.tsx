@@ -1,7 +1,7 @@
 import { connect, Dispatch } from 'react-redux';
 import ChooseHero from './ChooseHero';
 import { ChooseHeroNameAction, chooseHeroName } from '../../state/actions';
-import { StoreState } from '../../state/storeState';
+import StoreState from '../../state/storeState';
 
 function mapStateToProps({ heroName }: StoreState) {
   return {

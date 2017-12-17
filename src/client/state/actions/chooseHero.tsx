@@ -8,7 +8,6 @@ interface ChooseHeroName {
 export type ChooseHeroNameAction = ChooseHeroName;
 
 export function chooseHeroName(payload: string): ChooseHeroName {
-    console.log(payload)
     return {
       type: constants.CHOOSE_HERO_NAME,
       payload,
