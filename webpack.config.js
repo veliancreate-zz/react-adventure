@@ -1,8 +1,7 @@
-const NodemonPlugin = require( 'nodemon-webpack-plugin' );
 const path = require('path');
-
+const WebpackShellPlugin = require('webpack-shell-plugin');
 module.exports = {
-  entry: "./src/server/index.ts",
+  entry: "./src/server/server.ts",
   target: 'node',
   output: {
     filename: "server.js",
@@ -22,10 +21,15 @@ module.exports = {
       '.jsx',
     ],
     modules: [
-        `${root}/node_modules`,
-        'node_modules'
+      `${root}/node_modules`,
+      'node_modules'
     ]
   },
+  plugins: [
+    new WebpackShellPlugin({
+      onBuildEnd:['nodemon src/server/dist/server.js --watch src/server/dist']
+    })
+  ],
   module: {
     loaders: [
       // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
@@ -38,4 +42,9 @@ module.exports = {
       },
     ]
   },
+  watch: true,
+  watchOptions: {
+    poll: 1000,
+    ignore: /node_modules/,
+  }
 }

@@ -38252,7 +38252,7 @@ function assets(req, res) {
     })
         .catch(function (err) {
         console.log(err);
-        res.send(500);
+        res.sendStatus(500);
     });
 }
 function main(req, res) {

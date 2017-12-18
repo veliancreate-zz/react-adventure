@@ -43,7 +43,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "concurrently \"npm run start:server\" \"npm run start:client\" --raw",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
+    "poststart": "webpack --config webpack.config.js",
     "start:server": "webpack --config webpack.config.js",
     "start:client": "node scripts/start.js",
     "build": "node scripts/build.js",
@@ -60,9 +61,9 @@
     "@types/request-promise-native": "^1.0.10",
     "concurrently": "^3.5.1",
     "enzyme": "^3.2.0",
-    "nodemon-webpack-plugin": "^0.1.6",
     "react-addons-test-utils": "^15.6.2",
-    "ts-loader": "^2.3.7"
+    "ts-loader": "^2.3.7",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "jest": {
     "mapCoverage": true,
